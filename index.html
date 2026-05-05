@@ -1,307 +1,1121 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PTS</title>
-    <link href="templatemo-personal-style.css" rel="stylesheet">
-
-<!--
-
-TemplateMo 593 personal shape
-
-https://templatemo.com/tm-593-personal-shape
-
--->
+    <title>CV. Permata Teknik Solution — General Supplier & Engineering Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Fraunces:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Fraunces', 'serif'],
+                    },
+                    colors: {
+                        pts: {
+                            50: '#f0f5f0',
+                            100: '#d9e6d9',
+                            500: '#2c5f2e',
+                            600: '#245026',
+                            700: '#1a3d1c',
+                            900: '#0f240f',
+                        },
+                        gold: {
+                            400: '#d4a843',
+                            500: '#c8860a',
+                            600: '#a86e08',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-pattern {
+            background-color: #0f240f;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(44,95,46,0.4) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(200,134,10,0.15) 0%, transparent 40%),
+                url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .service-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(44,95,46,0.12);
+        }
+        .service-card:hover .service-icon {
+            background: #2c5f2e;
+            color: white;
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .service-icon {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .counter-animate {
+            font-variant-numeric: tabular-nums;
+        }
+        .btn-primary-pts {
+            background: linear-gradient(135deg, #2c5f2e 0%, #1a3d1c 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary-pts:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(44,95,46,0.3);
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #c8860a 0%, #a86e08 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(200,134,10,0.3);
+        }
+        .testimonial-card {
+            transition: all 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+        }
+        .partner-logo {
+            filter: grayscale(100%) opacity(0.5);
+            transition: all 0.3s ease;
+        }
+        .partner-logo:hover {
+            filter: grayscale(0%) opacity(1);
+        }
+        .nav-scrolled {
+            background: rgba(15, 36, 15, 0.95) !important;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+        .process-line {
+            position: absolute;
+            top: 24px;
+            left: 50%;
+            width: calc(100% - 48px);
+            height: 2px;
+            background: #e0e0e0;
+            transform: translateX(-50%);
+            z-index: 0;
+        }
+        @media (max-width: 768px) {
+            .process-line { display: none; }
+        }
+        
+        /* Slider Animations */
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 1s ease-in-out;
+            opacity: 0;
+            z-index: 0;
+        }
+        .hero-slide.active {
+            opacity: 1;
+            z-index: 10;
+        }
+        .slider-overlay-gradient {
+            background: linear-gradient(to top, #0f240f 0%, rgba(15,36,15,0.6) 30%, transparent 100%);
+        }
+        .slider-badge {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
 </head>
-<body>
-  <!-- script iklan 
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5810072002632465"
-     crossorigin="anonymous"></script>
-<!-- pts 
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-5810072002632465"
-     data-ad-slot="7430392980"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
-  	script iklan -->
+<body class="font-sans text-slate-800 antialiased overflow-x-hidden">
+
     <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="logo">CV. PERMATA TEKNIK SOLUTION</div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu-toggle" id="mobileMenuToggle">
-                <div class="hamburger"></div>
-                <div class="hamburger"></div>
-                <div class="hamburger"></div>
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo & Name Container -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- Logo Container -->
+                    <div class="w-9 h-9 sm:w-11 sm:h-11 bg-white rounded-xl flex items-center justify-center shadow-lg overflow-hidden p-1 flex-shrink-0">
+                        <img src="logo1.png" alt="CV. Permata Teknik Solution" class="w-full h-full object-contain">
+                    </div>
+                    
+                    <!-- Text Name Container -->
+                    <div class="block">
+                        <div class="text-white font-bold text-sm sm:text-lg leading-tight tracking-tight">Permata Teknik Solution</div>
+                        <div class="text-white/60 text-[9px] sm:text-[11px] font-medium tracking-wider uppercase">General Supplier and Engineering Service</div>
+                    </div>
+                </div>
+                
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#layanan" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Layanan</a>
+                    <a href="#tentang" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Tentang Kami</a>
+                    <a href="#proses" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Proses</a>
+                    <a href="#testimoni" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Testimoni</a>
+                    <a href="#kontak" class="bg-white text-pts-700 px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-pts-50 transition-all shadow-lg">
+                        Ajukan Penawaran
+                    </a>
+                </div>
+
+                <button id="mobile-menu-btn" class="md:hidden text-white text-2xl p-2 focus:outline-none">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-pts-900/98 backdrop-blur-xl border-t border-white/10">
+            <div class="px-6 py-6 space-y-4">
+                <a href="#layanan" class="block text-white/80 hover:text-white font-medium py-2">Layanan</a>
+                <a href="#tentang" class="block text-white/80 hover:text-white font-medium py-2">Tentang Kami</a>
+                <a href="#proses" class="block text-white/80 hover:text-white font-medium py-2">Proses</a>
+                <a href="#testimoni" class="block text-white/80 hover:text-white font-medium py-2">Testimoni</a>
+                <a href="#kontak" class="block bg-white text-pts-700 px-6 py-3 rounded-xl font-semibold text-center mt-4">Ajukan Penawaran</a>
             </div>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-        <ul class="mobile-nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </div>
-
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="floating-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="shape shape-4"></div>
-            <div class="shape shape-5"></div>
-            <div class="shape shape-6"></div>
+    <section class="hero-pattern min-h-screen flex items-center relative overflow-hidden pt-16">
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-1/4 -left-20 w-96 h-96 bg-pts-500/20 rounded-full blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/4 -right-20 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl animate-pulse" style="animation-delay: 1.5s;"></div>
         </div>
-        <div class="hero-content">
-            <div class="hero-subtitle">Creative Designer</div>
-            <h1>Transforming Ideas Into Beautiful Experiences</h1>
-            <p class="subtitle">I craft digital experiences that captivate, engage, and inspire through thoughtful design and innovative solutions</p>
-            <a href="#portfolio" class="cta-button">Explore My Work</a>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pt-12 pb-16">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div class="text-center lg:text-left fade-up">
+                    <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 mb-8 border border-white/20">
+                        <span class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
+                        <span class="text-white/90 text-sm font-medium">General Supplier & Engineering Service</span>
+                    </div>
+                    
+                    <h1 class="font-serif text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-[1.15] mb-6">
+                        Solusi Teknik<br>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-yellow-300">Profesional & Terpercaya</span>
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-white/70 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                        CV. Permata Teknik Solution menyediakan layanan engineering, supply barang, dan perawatan mesin dengan kualitas terbaik untuk industri Anda sejak 2016.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#kontak" class="btn-primary-pts text-white px-8 py-4 rounded-full font-bold text-base shadow-xl text-center flex items-center justify-center gap-2">
+                            <i class="fas fa-file-invoice"></i> Ajukan Penawaran
+                        </a>
+                        <a href="#layanan" class="glass-card text-white px-8 py-4 rounded-full font-bold text-base hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fas fa-arrow-down"></i> Lihat Layanan
+                        </a>
+                    </div>
+
+                    <div class="mt-12 grid grid-cols-3 gap-6 max-w-md mx-auto lg:mx-0">
+                        <div class="text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-white counter-animate" data-target="8">0</div>
+                            <div class="text-xs text-white/50 mt-1">Tahun Pengalaman</div>
+                        </div>
+                        <div class="text-center border-x border-white/10">
+                            <div class="text-2xl sm:text-3xl font-bold text-white counter-animate" data-target="500">0</div>
+                            <div class="text-xs text-white/50 mt-1">Proyek Selesai</div>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-2xl sm:text-3xl font-bold text-white counter-animate" data-target="98">0</div>
+                            <div class="text-xs text-white/50 mt-1">% Kepuasan Klien</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slider Gambar Menggantikan Surat Penawaran -->
+                <div class="hidden lg:block relative fade-up lg:pl-10" style="animation-delay: 0.2s;">
+                    <!-- Decorative blob behind slider -->
+                    <div class="absolute -inset-4 bg-gradient-to-r from-pts-500/30 to-gold-500/20 rounded-[2rem] blur-2xl"></div>
+                    
+                    <div class="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3] border border-white/10 slider-badge">
+                        <!-- Slide 1: Engineering/Repair -->
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Engineering Service" 
+                             class="hero-slide active">
+                        
+                        <!-- Slide 2: General Supplier/Warehouse -->
+                        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="General Supplier" 
+                             class="hero-slide">
+                             
+                        <!-- Slide 3: Technical Support -->
+                        <img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                             alt="Technical Consultation" 
+                             class="hero-slide">
+
+                        <!-- Overlay Gradient for Text Readability -->
+                        <div class="absolute inset-0 slider-overlay-gradient z-20"></div>
+                        
+                        <!-- Floating Content Card Overlay -->
+                        <div class="absolute bottom-0 left-0 right-0 p-8 z-30">
+                            <div class="glass-card rounded-2xl p-6 backdrop-blur-md border border-white/20">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <span class="px-2 py-1 bg-gold-500/20 text-gold-400 text-[10px] font-bold uppercase tracking-wider rounded border border-gold-500/30">
+                                        Featured Service
+                                    </span>
+                                    <div class="flex gap-1">
+                                        <span class="w-1.5 h-1.5 rounded-full bg-white slider-dot active" data-index="0"></span>
+                                        <span class="w-1.5 h-1.5 rounded-full bg-white/30 slider-dot" data-index="1"></span>
+                                        <span class="w-1.5 h-1.5 rounded-full bg-white/30 slider-dot" data-index="2"></span>
+                                    </div>
+                                </div>
+                                <h3 class="text-2xl font-serif font-bold text-white mb-1 leading-tight slider-title">
+                                    Engineering Excellence
+                                </h3>
+                                <p class="text-white/80 text-sm slider-desc">
+                                    Solusi perawatan mesin dan instalasi sistem dengan standar industri terbaik.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView()"></div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <a href="#layanan" class="text-white/30 hover:text-white/60 transition-colors">
+                <i class="fas fa-chevron-down text-xl"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Trusted By / Partners -->
+    <section class="py-12 bg-white border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p class="text-center text-slate-400 text-sm font-medium mb-8 uppercase tracking-wider">Dipercaya oleh berbagai industri</p>
+            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60">
+                <div class="partner-logo flex items-center gap-2 text-slate-600 font-bold text-lg">
+                    <i class="fas fa-industry text-2xl"></i> MANUFACTURING
+                </div>
+                <div class="partner-logo flex items-center gap-2 text-slate-600 font-bold text-lg">
+                    <i class="fas fa-oil-well text-2xl"></i> OIL & GAS
+                </div>
+                <div class="partner-logo flex items-center gap-2 text-slate-600 font-bold text-lg">
+                    <i class="fas fa-building text-2xl"></i> PROPERTY
+                </div>
+                <div class="partner-logo flex items-center gap-2 text-slate-600 font-bold text-lg">
+                    <i class="fas fa-hospital text-2xl"></i> HEALTHCARE
+                </div>
+                <div class="partner-logo flex items-center gap-2 text-slate-600 font-bold text-lg">
+                    <i class="fas fa-warehouse text-2xl"></i> LOGISTICS
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="layanan" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span class="text-pts-600 font-bold tracking-wider uppercase text-xs">Layanan Kami</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-4">Solusi Lengkap untuk Industri Anda</h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Dari supply barang hingga perawatan mesin, kami hadir dengan layanan profesional yang disesuaikan kebutuhan bisnis Anda.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: General Supplier -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg border border-slate-100 fade-up">
+                    <div class="service-icon w-16 h-16 bg-pts-50 rounded-2xl flex items-center justify-center mb-6 text-pts-600 text-2xl">
+                        <i class="fas fa-boxes-stacked"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">General Supplier</h3>
+                    <p class="text-slate-600 leading-relaxed mb-4">Penyediaan spare part, komponen mesin, dan perlengkapan industri dengan kualitas terjamin dan harga kompetitif.</p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Spare part original & OEM</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Pengadaan dalam jumlah besar</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Delivery ke seluruh Indonesia</li>
+                    </ul>
+                </div>
+
+                <!-- Service 2: Engineering Service -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg border border-slate-100 fade-up" style="animation-delay: 0.1s;">
+                    <div class="service-icon w-16 h-16 bg-pts-50 rounded-2xl flex items-center justify-center mb-6 text-pts-600 text-2xl">
+                        <i class="fas fa-gears"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Engineering Service</h3>
+                    <p class="text-slate-600 leading-relaxed mb-4">Layanan teknik profesional mulai dari instalasi, commissioning, hingga modifikasi sistem sesuai standar industri.</p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Instalasi & commissioning</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Modifikasi sistem</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Technical consulting</li>
+                    </ul>
+                </div>
+
+                <!-- Service 3: Repair & Maintenance -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg border border-slate-100 fade-up" style="animation-delay: 0.2s;">
+                    <div class="service-icon w-16 h-16 bg-pts-50 rounded-2xl flex items-center justify-center mb-6 text-pts-600 text-2xl">
+                        <i class="fas fa-screwdriver-wrench"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Repair & Maintenance</h3>
+                    <p class="text-slate-600 leading-relaxed mb-4">Perawatan preventif dan korektif untuk memastikan performa optimal mesin dan peralatan Anda.</p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Preventive maintenance</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Emergency repair 24/7</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Overhaul & restoration</li>
+                    </ul>
+                </div>
+
+                <!-- Service 4: Calibration -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg border border-slate-100 fade-up" style="animation-delay: 0.3s;">
+                    <div class="service-icon w-16 h-16 bg-pts-50 rounded-2xl flex items-center justify-center mb-6 text-pts-600 text-2xl">
+                        <i class="fas fa-scale-balanced"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Calibration Service</h3>
+                    <p class="text-slate-600 leading-relaxed mb-4">Kalibrasi instrumen dan peralatan ukur untuk memastikan akurasi dan kepatuhan standar industri.</p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Sertifikat kalibrasi resmi</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Berbagai jenis instrumen</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> On-site & in-lab service</li>
+                    </ul>
+                </div>
+
+                <!-- Service 5: Fabrication -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg border border-slate-100 fade-up" style="animation-delay: 0.4s;">
+                    <div class="service-icon w-16 h-16 bg-pts-50 rounded-2xl flex items-center justify-center mb-6 text-pts-600 text-2xl">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Fabrication</h3>
+                    <p class="text-slate-600 leading-relaxed mb-4">Pembuatan dan modifikasi struktur baja, tanki, piping, dan komponen custom sesuai spesifikasi teknis.</p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Struktur baja & tanki</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Piping & ducting</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Custom component</li>
+                    </ul>
+                </div>
+
+                <!-- Service 6: Technical Support -->
+                <div class="service-card bg-white rounded-2xl p-8 shadow-lg border border-slate-100 fade-up" style="animation-delay: 0.5s;">
+                    <div class="service-icon w-16 h-16 bg-pts-50 rounded-2xl flex items-center justify-center mb-6 text-pts-600 text-2xl">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Technical Support</h3>
+                    <p class="text-slate-600 leading-relaxed mb-4">Dukungan teknis berkelanjutan dengan tim engineer berpengalaman untuk troubleshooting dan konsultasi.</p>
+                    <ul class="space-y-2 text-sm text-slate-500">
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Remote troubleshooting</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> On-site support</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-check text-pts-500 text-xs"></i> Training operator</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title fade-in">About Me</h2>
-            <div class="about-content">
-                <div class="about-image slide-in-left"></div>
-                <div class="about-text slide-in-right">
-                    <h3>Passionate about creating meaningful digital experiences</h3>
-                    <p>CV PERMATA TEKNIK SOLUTION mengawali usahanya
-dengan lantar belakang sebuah bengkel Machining dan Fabrikasi
-berbentuk Bengkel Jaya. Pada awal usaha umumnya pekerjaan didapatkan
-dengan cara mensupport pembuatan mesin dan kontraktor mekanikal
-sebagai sub kontraktor (Sub-Con) pembuatan spare part dan berbagai
-peralatan pembuat mesin industri.</p>
-                    <p>Selain itu juga merintis usaha di
-bidang Informasi dan Teknologi (IT) serta sipil dan kontruksi.
-CV PERMATA TEKNIK SOLUTION bermaksud untuk memenuhi
-semua kebutuhan pada sektor industri baik berupa
-rekayasa teknik serta supplier barang teknik sesuai
-dengan permintaan dan kebutuhan pasar
-industri saat ini.
-</p>
-                    <p>When I'm not designing, you'll find me exploring new technologies, sketching ideas, or seeking inspiration in nature and architecture.</p>
-                    <div class="skills">
-                        <span class="skill-tag">UI/UX Design</span>
-                        <span class="skill-tag">Web Development</span>
-                        <span class="skill-tag">Brand Identity</span>
-                        <span class="skill-tag">Motion Graphics</span>
-                        <span class="skill-tag">Prototyping</span>
-                        <span class="skill-tag">Design Systems</span>
+    <section id="tentang" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="relative fade-up">
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-pts-100 rounded-full -z-10"></div>
+                    <div class="absolute -bottom-6 -right-6 w-40 h-40 bg-gold-100 rounded-full -z-10"></div>
+                    
+                    <div class="bg-slate-100 rounded-3xl p-3">
+                        <div class="bg-white rounded-2xl p-8 shadow-xl relative overflow-hidden">
+                            <div class="absolute top-0 right-0 w-32 h-32 bg-pts-50 rounded-bl-full -mr-8 -mt-8"></div>
+                            
+                            <div class="grid grid-cols-2 gap-4 relative z-10">
+                                <div class="space-y-4">
+                                    <div class="bg-pts-50 rounded-xl p-5 text-center border border-pts-100">
+                                        <i class="fas fa-award text-pts-600 text-3xl mb-2"></i>
+                                        <div class="font-bold text-slate-900">Bergaransi</div>
+                                        <div class="text-xs text-slate-500 mt-1">Semua pekerjaan</div>
+                                    </div>
+                                    <div class="bg-gold-50 rounded-xl p-5 text-center border border-gold-100">
+                                        <i class="fas fa-clock text-gold-600 text-3xl mb-2"></i>
+                                        <div class="font-bold text-slate-900">Tepat Waktu</div>
+                                        <div class="text-xs text-slate-500 mt-1">Delivery & service</div>
+                                    </div>
+                                </div>
+                                <div class="space-y-4 mt-8">
+                                    <div class="bg-blue-50 rounded-xl p-5 text-center border border-blue-100">
+                                        <i class="fas fa-shield-halved text-blue-600 text-3xl mb-2"></i>
+                                        <div class="font-bold text-slate-900">Bergaransi</div>
+                                        <div class="text-xs text-slate-500 mt-1">Kualitas terjamin</div>
+                                    </div>
+                                    <div class="bg-slate-800 rounded-xl p-5 text-center text-white">
+                                        <i class="fas fa-handshake text-gold-400 text-3xl mb-2"></i>
+                                        <div class="font-bold">Terpercaya</div>
+                                        <div class="text-xs text-slate-400 mt-1">8+ tahun berdiri</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-6 bg-pts-600 rounded-xl p-5 text-white text-center relative z-10">
+                                <div class="text-3xl font-bold font-serif mb-1">CV. Permata Teknik Solution</div>
+                                <div class="text-sm text-pts-200">General Supplier and Engineering Service</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-up" style="animation-delay: 0.2s;">
+                    <span class="text-pts-600 font-bold tracking-wider uppercase text-xs">Tentang Kami</span>
+                    <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-6">Partner Teknik Terpercaya untuk Industri Indonesia</h2>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-6">
+                        Berdiri sejak 2016, CV. Permata Teknik Solution telah menjadi mitra andalan berbagai perusahaan di sektor manufaktur, oil & gas, property, dan infrastruktur. Kami berkomitmen memberikan solusi engineering yang berkualitas dengan standar profesional.
+                    </p>
+                    <p class="text-lg text-slate-600 leading-relaxed mb-8">
+                        Berlokasi di Cibitung, Kabupaten Bekasi, kami siap melayani kebutuhan supply barang dan jasa teknik Anda dengan tim engineer berpengalaman dan jaringan supplier yang luas.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-pts-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-location-dot text-pts-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Lokasi Strategis</h4>
+                                <p class="text-slate-500 text-sm">Cibitung, Bekasi — pusat industri</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-pts-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-users text-pts-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Tim Profesional</h4>
+                                <p class="text-slate-500 text-sm">Engineer bersertifikasi & berpengalaman</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-pts-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-truck-fast text-pts-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Respons Cepat</h4>
+                                <p class="text-slate-500 text-sm">Emergency service tersedia</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 bg-pts-50 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                                <i class="fas fa-file-contract text-pts-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900 text-sm">Dokumen Lengkap</h4>
+                                <p class="text-slate-500 text-sm">Penawaran & SPK profesional</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2 class="section-title fade-in">Our Clients</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. Seolindo</h4>
-                        <p>Otomatisasi pada Mesin Potong Plastic & Otomatisasi pada Mesin Slitting.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Node.js</span>
-                            <span class="tech-tag">MongoDB</span>
-                            <span class="tech-tag">Stripe</span>
-                        </div>
+    <!-- Stats Section -->
+    <section class="py-20 bg-pts-900 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute inset-0" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 40px 40px;"></div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div class="fade-up">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter-animate" data-target="8">0</div>
+                    <div class="text-pts-300 font-medium text-sm">Tahun Berdiri</div>
+                </div>
+                <div class="fade-up" style="animation-delay: 0.1s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter-animate" data-target="500">0</div>
+                    <div class="text-pts-300 font-medium text-sm">Proyek Selesai</div>
+                </div>
+                <div class="fade-up" style="animation-delay: 0.2s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter-animate" data-target="50">0</div>
+                    <div class="text-pts-300 font-medium text-sm">Klien Aktif</div>
+                </div>
+                <div class="fade-up" style="animation-delay: 0.3s;">
+                    <div class="text-4xl md:text-5xl font-bold text-white mb-2 counter-animate" data-target="15">0</div>
+                    <div class="text-pts-300 font-medium text-sm">Tenaga Ahli</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="proses" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span class="text-pts-600 font-bold tracking-wider uppercase text-xs">Alur Kerja</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-4">Proses Penawaran yang Mudah & Transparan</h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Dari pengajuan hingga eksekusi, kami memastikan setiap langkah berjalan efisien dan transparan.</p>
+            </div>
+
+            <div class="relative max-w-5xl mx-auto">
+                <div class="process-line hidden md:block"></div>
+                
+                <div class="grid md:grid-cols-4 gap-8 relative z-10">
+                    <div class="text-center fade-up">
+                        <div class="w-12 h-12 bg-pts-600 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-lg shadow-pts-600/30">1</div>
+                        <h3 class="font-bold text-slate-900 mb-2">Konsultasi</h3>
+                        <p class="text-sm text-slate-500">Hubungi kami dengan kebutuhan barang atau jasa teknik Anda</p>
+                    </div>
+                    <div class="text-center fade-up" style="animation-delay: 0.15s;">
+                        <div class="w-12 h-12 bg-pts-600 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-lg shadow-pts-600/30">2</div>
+                        <h3 class="font-bold text-slate-900 mb-2">Survei & Analisis</h3>
+                        <p class="text-sm text-slate-500">Tim kami melakukan survei lokasi dan analisis kebutuhan teknis</p>
+                    </div>
+                    <div class="text-center fade-up" style="animation-delay: 0.3s;">
+                        <div class="w-12 h-12 bg-pts-600 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-lg shadow-pts-600/30">3</div>
+                        <h3 class="font-bold text-slate-900 mb-2">Penawaran Resmi</h3>
+                        <p class="text-sm text-slate-500">Anda menerima surat penawaran lengkap dengan detail spesifikasi dan harga</p>
+                    </div>
+                    <div class="text-center fade-up" style="animation-delay: 0.45s;">
+                        <div class="w-12 h-12 bg-gold-500 text-white rounded-full flex items-center justify-center font-bold text-lg mx-auto mb-4 shadow-lg shadow-gold-500/30">4</div>
+                        <h3 class="font-bold text-slate-900 mb-2">Eksekusi</h3>
+                        <p class="text-sm text-slate-500">Setelah deal, kami langsung eksekusi sesuai jadwal yang disepakati</p>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. Indo Mobil Suzuki</h4>
-                        <p>Instalasi pipa untuk cairan kimia Electroplanting Chorome.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Illustrator</span>
-                            <span class="tech-tag">Photoshop</span>
-                            <span class="tech-tag">Figma</span>
-                            <span class="tech-tag">After Effects</span>
-                        </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimoni" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span class="text-pts-600 font-bold tracking-wider uppercase text-xs">Testimoni</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-4">Apa Kata Klien Kami</h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Kepercayaan dari berbagai perusahaan adalah bukti komitmen kami terhadap kualitas.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="testimonial-card bg-slate-50 rounded-2xl p-8 border border-slate-100 fade-up">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
                     </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. CIBA Speciality Chemical Indonesia</h4>
-                        <p>Rekondisi Dosing System Machine.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Figma</span>
-                            <span class="tech-tag">Principle</span>
-                            <span class="tech-tag">React Native</span>
-                            <span class="tech-tag">Lottie</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. Kawasaki Motor Indonesia</h4>
-                        <p>Instalasi pipa Steam Trap 4 Line.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Vue.js</span>
-                            <span class="tech-tag">D3.js</span>
-                            <span class="tech-tag">SCSS</span>
-                            <span class="tech-tag">Chart.js</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. Grace Specialty Chemicals Indonesia</h4>
-                        <p>Maintenance Piping OP & WBC.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">Next.js</span>
-                            <span class="tech-tag">Framer Motion</span>
-                            <span class="tech-tag">Tailwind CSS</span>
-                            <span class="tech-tag">Vercel</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. Polyprima</h4>
-                        <p>Instalasi Dosing System to WWTP.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Three.js</span>
-                            <span class="tech-tag">GSAP</span>
-                            <span class="tech-tag">WebGL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. Graha Alam Industri</h4>
-                        <p>Service dan Pengadaan Genset.</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Three.js</span>
-                            <span class="tech-tag">GSAP</span>
-                            <span class="tech-tag">WebGL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. LassaleFood</h4>
-                        <p>Fabrikasi Caping Confeyor Corner</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Three.js</span>
-                            <span class="tech-tag">GSAP</span>
-                            <span class="tech-tag">WebGL</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-image"></div>
-                    <div class="portfolio-content">
-                        <h4>PT. Danone Indonesia</h4>
-                        <p>Otomatisasi Mesin Pembalik Product untuk Conveyor</p>
-                        <div class="portfolio-tech">
-                            <span class="tech-tag">React</span>
-                            <span class="tech-tag">Three.js</span>
-                            <span class="tech-tag">GSAP</span>
-                            <span class="tech-tag">WebGL</span>
+                    <p class="text-slate-600 leading-relaxed mb-6">"Service compressor kami ditangani dengan sangat profesional. Teknisi datang tepat waktu dan pekerjaan selesai dalam 2 hari sesuai estimasi. Harga juga sangat kompetitif."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-pts-100 rounded-full flex items-center justify-center text-pts-700 font-bold">AS</div>
+                        <div>
+                            <div class="font-bold text-slate-900">Ahmad Santoso</div>
+                            <div class="text-sm text-slate-500">Plant Manager, PT. Manufaktur Sejahtera</div>
                         </div>
                     </div>
                 </div>
 
+                <div class="testimonial-card bg-slate-50 rounded-2xl p-8 border border-slate-100 fade-up" style="animation-delay: 0.1s;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed mb-6">"Pengadaan spare part untuk maintenance rutin selalu lancar. Dokumen penawaran lengkap dan PPN sudah include. Sangat memudahkan proses administrasi kami."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-gold-100 rounded-full flex items-center justify-center text-gold-700 font-bold">DW</div>
+                        <div>
+                            <div class="font-bold text-slate-900">Dewi Wulandari</div>
+                            <div class="text-sm text-slate-500">Procurement Head, PT. Energi Nusantara</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card bg-slate-50 rounded-2xl p-8 border border-slate-100 fade-up" style="animation-delay: 0.2s;">
+                    <div class="flex items-center gap-1 mb-4">
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                        <i class="fas fa-star text-gold-400 text-sm"></i>
+                    </div>
+                    <p class="text-slate-600 leading-relaxed mb-6">"Kalibrasi instrumen kami ditangani dengan standar yang tinggi. Sertifikat lengkap dan hasil pengukuran akurat. Recommended untuk industri yang membutuhkan presisi."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center text-blue-700 font-bold">RB</div>
+                        <div>
+                            <div class="font-bold text-slate-900">Rudi Bakti</div>
+                            <div class="text-sm text-slate-500">QA Manager, PT. Kimia Farma Industri</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 bg-pts-900 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-0 left-1/4 w-96 h-96 bg-pts-600/20 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-0 right-1/4 w-80 h-80 bg-gold-500/10 rounded-full blur-3xl"></div>
+        </div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 fade-up">
+            <h2 class="font-serif text-4xl md:text-5xl font-bold text-white mb-6">Siap Mengajukan Penawaran?</h2>
+            <p class="text-lg text-pts-200 mb-10 max-w-2xl text-white mx-auto">Dapatkan surat penawaran resmi dengan detail spesifikasi dan harga transparan. Tim kami siap membantu kebutuhan teknik Anda.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#kontak" class="btn-gold text-white px-10 py-4 rounded-full font-bold text-lg shadow-xl text-center flex items-center justify-center gap-2">
+                    <i class="fas fa-paper-plane"></i> Ajukan Penawaran Sekarang
+                </a>
+                <a href="https://wa.me/6285880912714" target="_blank" class="glass-card text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-white/10 transition-all text-center flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i> Chat WhatsApp
+                </a>
+            </div>
+            <div class="mt-8 flex items-center justify-center gap-6 text-pts-300 text-white text-sm">
+                <span class="flex items-center gap-2"><i class="fas fa-check-circle"></i> Respon dalam 24 jam</span>
+                <span class="flex items-center gap-2"><i class="fas fa-check-circle"></i> Survei gratis</span>
+                <span class="flex items-center gap-2"><i class="fas fa-check-circle"></i> Garansi pekerjaan</span>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-floating-shapes">
-            <div class="contact-shape contact-shape-1"></div>
-            <div class="contact-shape contact-shape-2"></div>
-            <div class="contact-shape contact-shape-3"></div>
-            <div class="contact-shape contact-shape-4"></div>
-            <div class="contact-shape contact-shape-5"></div>
-            <div class="contact-shape contact-shape-6"></div>
-        </div>
-        <div class="container">
-            <div class="contact-content">
-                <h2 class="section-title fade-in">Let's Work Together</h2>
-                <p class="fade-in">Ready to bring your vision to life? Let's discuss how we can create something amazing together. I'm always excited to take on new challenges and collaborate on innovative projects.</p>
-                <form class="contact-form fade-in">
-                  <!--
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your full name" required>
+    <section id="kontak" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <span class="text-pts-600 font-bold tracking-wider uppercase text-xs">Hubungi Kami</span>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-4">Mari Berdiskusi</h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Hubungi kami untuk konsultasi gratis atau ajukan penawaran barang dan jasa teknik sesuai kebutuhan Anda.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-5 gap-12">
+                <!-- Contact Info -->
+                <div class="lg:col-span-2 space-y-8 fade-up">
+                    <div class="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
+                        <h3 class="font-serif text-xl font-bold text-slate-900 mb-6">Informasi Kontak</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-pts-50 rounded-xl flex items-center justify-center text-pts-600 flex-shrink-0">
+                                    <i class="fas fa-building text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900 text-sm mb-1">Nama Perusahaan</div>
+                                    <div class="text-slate-600 text-sm leading-relaxed">CV. Permata Teknik Solution</div>
+                                    <div class="text-slate-400 text-xs">General Supplier and Engineering Service</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-pts-50 rounded-xl flex items-center justify-center text-pts-600 flex-shrink-0">
+                                    <i class="fas fa-location-dot text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900 text-sm mb-1">Alamat Kantor</div>
+                                    <div class="text-slate-600 text-sm leading-relaxed">Permata Nusa Indah Cluster Emerald No.01, RT005/RW013, Cibitung, Muktiwari, Kab. Bekasi</div>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-pts-50 rounded-xl flex items-center justify-center text-pts-600 flex-shrink-0">
+                                    <i class="fas fa-phone text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900 text-sm mb-1">Telepon / WhatsApp</div>
+                                    <a href="https://wa.me/6285880912714" class="text-pts-600 font-semibold text-sm hover:underline">085 880 912 714</a>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-pts-50 rounded-xl flex items-center justify-center text-pts-600 flex-shrink-0">
+                                    <i class="fas fa-envelope text-lg"></i>
+                                </div>
+                                <div>
+                                    <div class="font-bold text-slate-900 text-sm mb-1">Email</div>
+                                    <a href="mailto:Permatatekniksolution@gmail.com" class="text-pts-600 font-semibold text-sm hover:underline">Permatatekniksolution@gmail.com</a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="your.email@example.com" required>
+
+                        <div class="mt-8 pt-6 border-t border-slate-100">
+                            <div class="font-bold text-slate-900 text-sm mb-4">Jam Operasional</div>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex justify-between text-slate-600">
+                                    <span>Senin — Jumat</span>
+                                    <span class="font-medium text-slate-900">08:00 — 17:00 WIB</span>
+                                </div>
+                                <div class="flex justify-between text-slate-600">
+                                    <span>Sabtu</span>
+                                    <span class="font-medium text-slate-900">08:00 — 14:00 WIB</span>
+                                </div>
+                                <div class="flex justify-between text-slate-500">
+                                    <span>Minggu</span>
+                                    <span class="font-medium">Tutup (Emergency tersedia)</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="subject">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="lg:col-span-3 fade-up" style="animation-delay: 0.2s;">
+                    <div class="bg-white rounded-2xl p-8 md:p-10 shadow-lg border border-slate-100">
+                        <h3 class="font-serif text-xl font-bold text-slate-900 mb-2">Form Pengajuan Penawaran</h3>
+                        <p class="text-slate-500 text-sm mb-8">Isi form berikut dan data akan otomatis terkirim ke WhatsApp admin kami.</p>
+                        
+                        <form id="contactForm" class="space-y-6">
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama Perusahaan <span class="text-red-500">*</span></label>
+                                    <input type="text" id="inputCompany" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border-0 text-sm focus:ring-2 focus:ring-pts-500/20 focus:bg-white transition-all" placeholder="PT. Nama Perusahaan">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Nama PIC <span class="text-red-500">*</span></label>
+                                    <input type="text" id="inputPic" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border-0 text-sm focus:ring-2 focus:ring-pts-500/20 focus:bg-white transition-all" placeholder="Nama lengkap">
+                                </div>
+                            </div>
+
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Email <span class="text-red-500">*</span></label>
+                                    <input type="email" id="inputEmail" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border-0 text-sm focus:ring-2 focus:ring-pts-500/20 focus:bg-white transition-all" placeholder="email@perusahaan.com">
+                                </div>
+                                <div>
+                                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">No. Telepon <span class="text-red-500">*</span></label>
+                                    <input type="tel" id="inputPhone" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border-0 text-sm focus:ring-2 focus:ring-pts-500/20 focus:bg-white transition-all" placeholder="081234567890">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Jenis Layanan <span class="text-red-500">*</span></label>
+                                <select id="inputService" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border-0 text-sm focus:ring-2 focus:ring-pts-500/20 focus:bg-white transition-all appearance-none cursor-pointer">
+                                    <option value="">Pilih jenis layanan...</option>
+                                    <option value="General Supplier">General Supplier</option>
+                                    <option value="Engineering Service">Engineering Service</option>
+                                    <option value="Repair & Maintenance">Repair & Maintenance</option>
+                                    <option value="Calibration Service">Calibration Service</option>
+                                    <option value="Fabrication">Fabrication</option>
+                                    <option value="Technical Support">Technical Support</option>
+                                    <option value="Lainnya">Lainnya</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Deskripsi Kebutuhan <span class="text-red-500">*</span></label>
+                                <textarea id="inputDesc" rows="4" required class="w-full px-4 py-3 rounded-xl bg-slate-50 border-0 text-sm focus:ring-2 focus:ring-pts-500/20 focus:bg-white transition-all resize-none" placeholder="Jelaskan kebutuhan barang atau jasa Anda secara detail..."></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full btn-primary-pts text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2">
+                                <i class="fab fa-whatsapp"></i> Kirim ke WhatsApp
+                            </button>
+                        </form>
                     </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
-                    </div>
-                  -->
-                    <a   href="https://wa.me/6282333270800" target="_blank" class="submit-btn">Send Message   </a>
-								<p class="fade-in">Perumahan Permata Nusa Indah cluster Emerald 21 / 01 Cibitung, Muktiwari, Kabupaten Bekasi, Jawa Barat, 17526.</p>											<div class="map-container"> 
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1983.1398582212291!2d107.10207504496695!3d-6.226803602188653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1759033845496!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-                </form>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-left">
-                    <p>&copy; 2025 Personal Shape. All rights reserved.</p>
+    <footer class="bg-pts-900 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="flex items-center gap-3 mb-6">
+                         <!-- Logo Footer -->
+                         <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center overflow-hidden p-1">
+                            <img src="logo1.png" alt="Permata Teknik Solution" class="w-full h-full object-contain">
+                        </div>
+                        <div>
+                            <div class="font-bold text-lg leading-tight">Permata Teknik</div>
+                            <div class="text-white/40 text-[10px] tracking-wider uppercase">Solution</div>
+                        </div>
+                    </div>
+                    <p class="text-white/50 text-sm leading-relaxed mb-6">
+                        General Supplier and Engineering Service yang berkomitmen memberikan solusi teknik terbaik untuk industri Indonesia.
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="#" class="w-9 h-9 bg-white/10 hover:bg-pts-600 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-whatsapp text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 bg-white/10 hover:bg-pts-600 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-linkedin-in text-sm"></i>
+                        </a>
+                        <a href="#" class="w-9 h-9 bg-white/10 hover:bg-pts-600 rounded-lg flex items-center justify-center transition-colors">
+                            <i class="fab fa-instagram text-sm"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="footer-right">
-                    <a href="#privacy">Privacy Policy</a>
-                    <a href="#terms">Terms of Use</a>
-                    <a href="#sitemap">Sitemap</a>
-                    <a href="#https://templatemo.com" target="_blank" >Provided by TemplateMo</a>
+
+                <div>
+                    <h4 class="font-bold text-sm mb-6 uppercase tracking-wider">Layanan</h4>
+                    <ul class="space-y-3 text-white/50 text-sm">
+                        <li><a href="#layanan" class="hover:text-white transition-colors">General Supplier</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition-colors">Engineering Service</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition-colors">Repair & Maintenance</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition-colors">Calibration</a></li>
+                        <li><a href="#layanan" class="hover:text-white transition-colors">Fabrication</a></li>
+                    </ul>
                 </div>
-                
+
+                <div>
+                    <h4 class="font-bold text-sm mb-6 uppercase tracking-wider">Perusahaan</h4>
+                    <ul class="space-y-3 text-white/50 text-sm">
+                        <li><a href="#tentang" class="hover:text-white transition-colors">Tentang Kami</a></li>
+                        <li><a href="#proses" class="hover:text-white transition-colors">Proses Kerja</a></li>
+                        <li><a href="#testimoni" class="hover:text-white transition-colors">Testimoni</a></li>
+                        <li><a href="#kontak" class="hover:text-white transition-colors">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-sm mb-6 uppercase tracking-wider">Kontak</h4>
+                    <ul class="space-y-3 text-white/50 text-sm">
+                        <li class="flex items-start gap-2">
+                            <i class="fas fa-location-dot mt-1 text-xs text-pts-400"></i>
+                            <span>Permata Nusa Indah Cluster Emerald No.01, Cibitung, Bekasi</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone text-xs text-pts-400"></i>
+                            <span>085 880 912 714</span>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope text-xs text-pts-400"></i>
+                            <span>Permatatekniksolution@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <div class="text-white/30 text-xs">
+                    © 2026 CV. Permata Teknik Solution. All rights reserved.
+                </div>
+                <div class="flex gap-6 text-xs text-white/30">
+                    <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+                </div>
             </div>
         </div>
     </footer>
 
-<script src="templatemo-personal-javascripts.js"></script>
-</body>
+    <!-- Toast -->
+    <div id="toast" class="fixed bottom-8 right-8 bg-pts-900 text-white px-6 py-4 rounded-xl shadow-2xl transform translate-y-24 transition-transform duration-300 z-50 flex items-center gap-3">
+        <i class="fas fa-check-circle text-green-400"></i>
+        <div>
+            <div class="font-bold text-sm">Berhasil!</div>
+            <div class="text-xs text-white/60">Data telah disiapkan.</div>
+        </div>
+    </div>
 
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled', 'py-2');
+                navbar.classList.remove('py-4');
+            } else {
+                navbar.classList.remove('nav-scrolled', 'py-2');
+                navbar.classList.add('py-4');
+            }
+        });
+
+        // Mobile menu
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Counter animation
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    const duration = 2000;
+                    const step = target / (duration / 16);
+                    let current = 0;
+
+                    const update = () => {
+                        current += step;
+                        if (current < target) {
+                            counter.textContent = Math.floor(current) + (target > 100 ? '+' : '');
+                            requestAnimationFrame(update);
+                        } else {
+                            counter.textContent = target + (target > 100 ? '+' : '');
+                        }
+                    };
+                    update();
+                    counterObserver.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        document.querySelectorAll('.counter-animate').forEach(c => counterObserver.observe(c));
+
+        // --- WHATSAPP FORM LOGIC ---
+        const contactForm = document.getElementById('contactForm');
+        const toast = document.getElementById('toast');
+        const toastTitle = toast.querySelector('.font-bold');
+        const toastDesc = toast.querySelector('.text-xs');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // 1. Ambil Data dari Form
+            const company = document.getElementById('inputCompany').value;
+            const pic = document.getElementById('inputPic').value;
+            const email = document.getElementById('inputEmail').value;
+            const phone = document.getElementById('inputPhone').value;
+            const service = document.getElementById('inputService').value;
+            const desc = document.getElementById('inputDesc').value;
+
+            // 2. Format Pesan WhatsApp
+            // Menggunakan karakter \n untuk baris baru dan %0A untuk URL encoding baris baru
+            const message = `Halo Admin CV. Permata Teknik Solution,%0A%0A` +
+                            `Saya ingin mengajukan penawaran.%0A` +
+                            `--------------------------------%0A` +
+                            `*Detail Perusahaan:*%0A` +
+                            `▫️ Nama: ${company}%0A` +
+                            `▫️ PIC: ${pic}%0A` +
+                            `▫️ Email: ${email}%0A` +
+                            `▫️ No. HP: ${phone}%0A%0A` +
+                            `*Kebutuhan:*%0A` +
+                            `▫️ Layanan: ${service}%0A` +
+                            `▫️ Deskripsi: ${desc}%0A` +
+                            `--------------------------------%0A` +
+                            `Mohon info penawaran lebih lanjut. Terima kasih.`;
+
+            // Nomor WhatsApp Tujuan (Format internasional: 628...)
+            const waNumber = "6285880912714";
+            const whatsappURL = `https://wa.me/${waNumber}?text=${message}`;
+
+            // 3. Tampilkan Feedback ke User (Toast)
+            toastTitle.innerText = "Membuka WhatsApp...";
+            toastDesc.innerText = "Mohon tunggu sebentar.";
+            toast.classList.remove('translate-y-24');
+
+            // 4. Buka WhatsApp di Tab Baru
+            setTimeout(() => {
+                window.open(whatsappURL, '_blank');
+                
+                // Reset Form
+                contactForm.reset();
+
+                // Kembalikan Toast ke posisi semula setelah 3 detik
+                setTimeout(() => {
+                    toast.classList.add('translate-y-24');
+                    // Reset Teks Toast
+                    setTimeout(() => {
+                        toastTitle.innerText = "Berhasil!";
+                        toastDesc.innerText = "Data telah disiapkan.";
+                    }, 300);
+                }, 3000);
+
+            }, 1000); // Delay sedikit agar user sempat membaca toast
+        });
+
+        // --- IMAGE SLIDER LOGIC ---
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.slider-dot');
+        const titles = document.querySelectorAll('.slider-title');
+        const descs = document.querySelectorAll('.slider-desc');
+        
+        // Data content for slides to sync text with images
+        const slideContent = [
+            {
+                title: "Engineering Excellence",
+                desc: "Solusi perawatan mesin dan instalasi sistem dengan standar industri terbaik."
+            },
+            {
+                title: "General Supplier",
+                desc: "Pengadaan barang dan sparepart industri cepat dan terpercaya."
+            },
+            {
+                title: "Professional Consultation",
+                desc: "Analisis kebutuhan teknis dan perencanaan strategis bisnis Anda."
+            }
+        ];
+
+        let currentSlide = 0;
+
+        function updateSlider() {
+            // Update Images
+            slides.forEach((slide, index) => {
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else {
+                    slide.classList.remove('active');
+                }
+            });
+
+            // Update Dots
+            dots.forEach((dot, index) => {
+                if (index === currentSlide) {
+                    dot.classList.remove('bg-white/30');
+                    dot.classList.add('bg-white');
+                } else {
+                    dot.classList.add('bg-white/30');
+                    dot.classList.remove('bg-white');
+                }
+            });
+
+            // Update Text Content with simple fade
+            const titleEl = document.querySelector('.slider-title');
+            const descEl = document.querySelector('.slider-desc');
+            
+            titleEl.style.opacity = 0;
+            descEl.style.opacity = 0;
+            
+            setTimeout(() => {
+                titleEl.textContent = slideContent[currentSlide].title;
+                descEl.textContent = slideContent[currentSlide].desc;
+                titleEl.style.opacity = 1;
+                descEl.style.opacity = 1;
+            }, 300);
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            updateSlider();
+        }
+
+        // Auto play slider every 4 seconds
+        setInterval(nextSlide, 4000);
+
+        // Initialize slider
+        updateSlider();
+
+    </script>
+</body>
 </html>
