@@ -150,6 +150,57 @@
             50% { transform: translateY(-5px); }
             100% { transform: translateY(0px); }
         }
+
+                  /* Efek Hover pada Kartu */
+        .client-card {
+            transition: all 0.4s ease-in-out;
+            border: 1px solid #e2e8f0;
+        }
+
+        .client-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #cbd5e1;
+        }
+
+        /* Efek Zoom pada Gambar */
+        .card-image-container {
+            overflow: hidden;
+        }
+
+        .card-image {
+            transition: transform 0.6s ease;
+        }
+
+        .client-card:hover .card-image {
+            transform: scale(1.1);
+        }
+
+        /* Animasi Fade Up */
+        .fade-up {
+            animation: fadeUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Delay untuk kartu kedua dan ketiga */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+
+        /* Styling Badge/Tag */
+        .tech-tag {
+            position: relative;
+            z-index: 10;
+        }
+
+        
     </style>
 </head>
 <body class="font-sans text-slate-800 antialiased overflow-x-hidden">
@@ -176,7 +227,7 @@
                     <a href="#layanan" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Layanan</a>
                     <a href="#tentang" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Tentang Kami</a>
                     <a href="#proses" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Proses</a>
-                    <a href="#testimoni" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Testimoni</a>
+                    <a href="#testimoni" class="text-white/80 hover:text-white text-sm font-medium transition-colors">Portofolio</a>
                     <a href="#kontak" class="bg-white text-pts-700 px-6 py-2.5 rounded-full font-semibold text-sm hover:bg-pts-50 transition-all shadow-lg">
                         Ajukan Penawaran
                     </a>
@@ -194,7 +245,7 @@
                 <a href="#layanan" class="block text-white/80 hover:text-white font-medium py-2">Layanan</a>
                 <a href="#tentang" class="block text-white/80 hover:text-white font-medium py-2">Tentang Kami</a>
                 <a href="#proses" class="block text-white/80 hover:text-white font-medium py-2">Proses</a>
-                <a href="#testimoni" class="block text-white/80 hover:text-white font-medium py-2">Testimoni</a>
+                <a href="#testimoni" class="block text-white/80 hover:text-white font-medium py-2">Portofolio</a>
                 <a href="#kontak" class="block bg-white text-pts-700 px-6 py-3 rounded-xl font-semibold text-center mt-4">Ajukan Penawaran</a>
             </div>
         </div>
@@ -594,7 +645,7 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimoni" class="py-24 bg-white">
+  <!--  <section id="testimoni" class="py-24 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16 fade-up">
                 <span class="text-pts-600 font-bold tracking-wider uppercase text-xs">Testimoni</span>
@@ -658,7 +709,273 @@
                 </div>
             </div>
         </div>
+    </section> -->
+    <section id="testimoni" class="py-24 bg-white">
+        
+        <!-- Background Decoration (Optional Circle) -->
+        <div class="absolute top-0 left-0 w-64 h-64 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 -translate-x-1/2 -translate-y-1/2"></div>
+        <div class="absolute bottom-0 right-0 w-64 h-64 bg-gold-50 rounded-full mix-blend-multiply filter blur-3xl opacity-70 translate-x-1/2 translate-y-1/2"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Section Header -->
+            <div class="text-center mb-16 fade-up">
+                <span class="text-pts-600 font-bold tracking-wider uppercase text-xs">Portofolio</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-3 mb-4">Our Clients</h2>
+                <p class="text-lg text-slate-500 max-w-2xl mx-auto">Kami bangga bekerja sama dengan pemimpin industri untuk memberikan solusi teknis yang presisi dan andal.</p>
+            </div>
+
+            <!-- Clients Grid -->
+            <div class="grid md:grid-cols-3 gap-8">
+                
+                <!-- Client 1: PT. Seolindo -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/4.jpg" 
+                             alt="Mesin Potong Plastic PT Seolindo" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                            <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i> PT. Seolindo
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. Seolindo</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Implementasi otomasi penuh pada <strong>Mesin Potong Plastic</strong> dan sistem <strong>Slitting</strong> untuk meningkatkan presisi dan kecepatan produksi.
+                        </p>
+                      <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Client 2: PT. Indo Mobil Suzuki -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up delay-100 group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/5.jpg" 
+                             alt="Instalasi Pipa Electroplating Suzuki" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                            <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i> PT. Indo Mobil Suzuki
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. Indo Mobil Suzuki</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Pengerjaan instalasi pipa cairan untuk proses <strong>Electroplanting Chrome</strong> dengan standar keamanan industri otomotif yang tinggi.
+                        </p>
+                        <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Client 3: PT. CIBA Speciality Chemical Indonesia -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up delay-200 group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/6.jpg" 
+                             alt="Dosing System Machine CIBA" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                            <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i> PT. CIBA Speciality Chemical
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. CIBA Speciality Chemical</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Proyek <strong>Rebuild Dosing System Machine</strong> untuk memastikan akurasi pencampuran bahan kimia dalam skala industri.
+                        </p>
+                        <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+            <!-- Client 4: PT. Kawasaki Motor Indonesia -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up delay-200 group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/7.jpg"
+                             alt="Dosing System Machine CIBA" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                                <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i> PT. Kawasaki Motor Indonesia
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. Kawasaki Motor Indonesia</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                           Instalasi pipa <strong>Steam Trap 4 Line.</strong>
+                        </p>
+                        <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+                
+            <!-- Client 5: PT. Grace Speciality Chemical Indonesia -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up delay-200 group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/8.jpg" 
+                             alt="Dosing System Machine CIBA" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                                <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i></i> PT. Grace Specialty Chemicals Indonesia
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. Grace Specialty Chemicals Indonesia</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            <strong>Maintenance Piping OP & WBC.</strong> 
+                        </p>
+                        <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+             
+                <!-- Client 6: PT. Polyprima -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up delay-200 group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/9.jpg" 
+                             alt="Dosing System Machine CIBA" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                                <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i></i> PT. Polyprima
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. Polyprima</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Instalasi <strong>Dosing System to WWTP.</strong> 
+                        </p>
+                        <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Client 7: PT. Graha Alam Industri -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up delay-200 group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/1.jpg" 
+                             alt="Dosing System Machine CIBA" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                                <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i> PT. Graha Alam Industri
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. Graha Alam Industri</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                            Service dan Pengadaan Genset. 
+                        </p>
+                        <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Client 8: PT. LassaleFood -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up delay-200 group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/2.jpg" 
+                             alt="Dosing System Machine CIBA" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                                <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i> PT. LassaleFood
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. LassaleFood</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                             <strong>Fabrikasi Caping Confeyor Corner</strong> 
+                           
+                        </p>
+                        <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+                <!-- Client 9: PT. Danone Indonesia -->
+                <div class="client-card bg-white rounded-2xl shadow-sm overflow-hidden fade-up delay-200 group">
+                    <!-- Image Area -->
+                    <div class="card-image-container h-56 relative">
+                        <img src="images/3.jpg" 
+                             alt="Dosing System Machine CIBA" 
+                             class="card-image w-full h-full object-cover">
+                        <!-- Tech Tag Overlay -->
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm shadow-sm rounded-full px-3 py-1 tech-tag">
+                                <span class="text-sm font-bold text-orange-600 flex items-center gap-2">
+                                <i class="fas fa-pen-nib text-orange-500"></i> PT. Danone Indonesia
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Area -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">PT. Danone Indonesia</h3>
+                        <p class="text-slate-500 text-sm leading-relaxed mb-4">
+                          <strong>Otomatisasi Mesin</strong>   Pembalik <strong>Product</strong> untuk Conveyor
+                        </p>
+                        <!--  <a href="#" class="text-pts-600 font-semibold text-sm hover:text-pts-700 transition-colors flex items-center gap-2">
+                            Lihat Detail Proyek <i class="fas fa-arrow-right text-xs"></i>
+                        </a> -->
+                    </div>
+                </div>
+
+            </div>
+        </div> 
     </section>
+
+    
 
     <!-- CTA Section -->
     <section class="py-24 bg-pts-900 relative overflow-hidden">
